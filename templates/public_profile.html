@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>@{{ user.username }} - Fenwick</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <a href="/home"><h1>Home</h1></a>
+
+    <h2><strong>{{ user.name }}</strong> @({{ user.username }}) </h2>
+    <p>{{ user.loc }}</p>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+body::-webkit-scrollbar, body::-webkit-scrollbar-button {
+    display: none; 
+}
+
+body {
+    background-color:rgb(15, 20, 29);
+    /* background-image: url("C:/Users/dracg/Downloads/blue-back.png"); */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    color: coral;
+}
+h1 {
+    padding-left: 1.2rem;
+}
+hr {
+    border-color: rgb(95, 165, 167);
+    border-width: 0.2rem;
+    border-radius: 2rem;
+}
+a, a:visited {
+    color:white;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.7rem;
+    text-size-adjust: 0.5rem;
+    text-decoration-color: rgb(95, 165, 167);
+
+    background-color: rgb(50, 63, 74);
+    border-radius: 2rem;
+}
+
+.main {
+    padding: 1rem;
+}
+.main .card a {
+    display: block;
+    padding: 0.4rem;
+}
+
+.main a::before {
+    content: "> ";
+}
+
+.card p::before {
+    padding-left: 6rem;
+    content: "- ";
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+}
+.footer #time {
+    padding: 1rem;
+    text-align: right;
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Home - Fenwick</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <h1><a href="/home">Home</a></h1>
+    <a href="/profile">Profile</a>
+
+    <ul>
+      {% for user in users %}
+        <li>
+          <a href="/user/{{ user.username }}">
+            @{{ user.username }}: {{ user.loc }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
