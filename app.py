@@ -21,8 +21,6 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-
-
 @app.route('/signup', methods=["GET","POST"])
 def signup():
     if request.method == "POST":
@@ -48,20 +46,32 @@ def login():
         if user:
             login_user(user)
             return redirect(url_for("home"))
+        else:
+            return redirect(url_for("signup"))
 
+    
     return render_template("login.html")
 
-@app.route("/profile")
+@app.route("/profile", methods=["GET", "POST"])
 @login_required
 def profile():
+    if request.method == "POST":
+        loc = request.form["location"]
+        if current_user:
+            current_user.loc = loc
+            db.session.commit()
+        
     return render_template("profile.html", user=current_user)
 
 @app.route("/user/<username>")
 def public_profile(username):
-    user = User.query.filter_by(username=username).first_or_404()
-    if user == current_user:
-        return render_template("profile.html", user=user)    
-    return render_template("public_profile.html", user=user)
+    user = User.query.filter_by(username=username).first()
+    if user:
+        if user == current_user:
+            return render_template("profile.html", user=user)    
+        return render_template("public_profile.html", user=user)
+    else:
+        return redirect(url_for("home"))
 
 @app.route("/")
 @app.route("/home")

@@ -32,27 +32,44 @@ a:hover {
 }
 
 .main {
-    padding: 1rem;
+    padding: 2rem;
+    color: coral;
+    background-color: rgb(32, 43, 63);
+    border-width: 0.2rem;
+    border-radius: 2rem;
 }
-.main .card a {
+.main a {
     display: block;
     padding: 0.4rem;
 }
 
 .main a::before {
     content: "> ";
+    color: coral;
 }
 
-.card p::before {
-    padding-left: 6rem;
-    content: "- ";
+ul {
+    list-style-type: none;
 }
 
-.footer {
-    position: fixed;
-    bottom: 0;
+.location {
+    border-radius: 1rem;
+    padding: 0.1rem;
+    text-decoration: none;
 }
-.footer #time {
-    padding: 1rem;
-    text-align: right;
+.JC2 {
+    background-color: lime;
+}
+.JC3 {
+    background-color: green;
+}
+
+.Fen2 {
+    background-color: rgb(255, 234, 0);
+}
+.Fen3 {
+    background-color: gold;
+}
+.Fen4 {
+    background-color: goldenrod;
 }
