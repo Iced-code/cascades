@@ -5,9 +5,16 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   </head>
   <body>
-    <a href="/home"><h1>Home</h1></a>
+    <div class="main">
+      <div class="navbar">
+        <h2><a href="/home">Home</a></h2>
+        <h2><a href="/profile">Profile</a></h2>
+      </div>
 
-    <h2><strong>{{ user.name }}</strong> @({{ user.username }}) </h2>
-    <p>{{ user.loc }}</p>
+      <div class="container">
+        <p><strong>{{ user.name }}</strong> @({{ user.username }}) </p>
+        <p class="location {{ user.loc }}">{{ user.loc }}</p>
+      </div>
+    </div>
   </body>
 </html>

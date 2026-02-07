@@ -5,25 +5,53 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   </head>
   <body>
-    <a href="/home"><h1>Home</h1></a>
+    <div class="main">
+      <div class="navbar">
+        <h2><a href="/home">Home</a></h2>
+        <h2><a href="/profile">Profile</a></h2>
+      </div>
 
-    <h2><strong>{{ user.name }}</strong> @({{ user.username }}) </h2>
-    <p>Email: {{ user.email }}</p>
+      <div class="container profile">
+        <h2><strong>{{ user.name }}</strong> @({{ user.username }}) </h2>
+        <p>Email: {{ user.email }}</p>
 
-    <form method="POST">
-      <label for="location"></label>
-      <select class="location" name="location">
-        <option value="JC2">JC2</option>
-        <option value="JC3">JC3</option>
-        <option value="Fen2">Fenwick 2</option>
-        <option value="Fen3">Fenwick 3</option>
-        <option value="Fen4">Fenwick 4</option>
-      </select>
-      <input type="submit">
-    </form>
+        <select class="location" name="location" id="locationDropdown" onclick="updateLocationTag(); setDropdown()">
+          <option value="JC2" class="location JC2">JC2</option>
+          <option value="JC3" class="location JC3">JC3</option>
+          <option value="Fen2" class="location Fen2">Fenwick 2</option>
+          <option value="Fen3" class="location Fen3">Fenwick 3</option>
+          <option value="Fen4" class="location Fen4">Fenwick 4</option>
+        </select>
 
-    <p>{{ user.loc }}</p>
+        <p class="location {{ user.loc }}" id="locationTag">{{ user.loc }}</p>
 
-    <a href="/logout">Logout</a>
+        <a href="/logout">Logout</a>
+      </div>
+    </div>
+
+    <script>
+      function updateLocationTag(){
+        const locationTag = document.getElementById("locationTag");
+        const locationDropdown = document.getElementById("locationDropdown");
+
+        locationTag.innerText = locationDropdown.value;
+        locationTag.className = "location " + locationDropdown.value;
+
+        fetch("/setLocation", {
+          method: "POST",
+          headers: { "Content-Type": "application/json"},
+          body: JSON.stringify({ "location": locationDropdown.value })
+        });
+      }
+
+      function setDropdown(){
+        const locationTag = document.getElementById("locationTag");
+        const locationDropdown = document.getElementById("locationDropdown");
+
+        locationDropdown.value = locationTag.innerText;
+        locationDropdown.className = locationTag.className;
+      }
+      setDropdown();
+    </script>
   </body>
 </html>

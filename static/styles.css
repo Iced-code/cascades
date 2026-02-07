@@ -4,30 +4,35 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button {
 
 body {
     background-color:rgb(15, 20, 29);
-    /* background-image: url("C:/Users/dracg/Downloads/blue-back.png"); */
     font-family: 'Courier New', Courier, monospace;
     font-size: 2rem;
     color: coral;
 }
-h1 {
+.main * {
     padding-left: 1.2rem;
 }
+
+.navbar {
+    background-color: rgb(43, 63, 100);
+    border-radius: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 18px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
 hr {
     border-color: rgb(95, 165, 167);
     border-width: 0.2rem;
-    border-radius: 2rem;
-}
-a, a:visited {
-    color:white;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-    text-underline-offset: 0.7rem;
-    text-size-adjust: 0.5rem;
-    text-decoration-color: rgb(95, 165, 167);
-
-    background-color: rgb(50, 63, 74);
     border-radius: 2rem;
 }
 
@@ -38,12 +43,28 @@ a:hover {
     border-width: 0.2rem;
     border-radius: 2rem;
 }
-.main a {
-    display: block;
-    padding: 0.4rem;
+
+.container * {
+    padding-left: 2rem;
 }
 
-.main a::before {
+.profile * {
+    display: inline-block;
+}
+
+.container a, a:visited {
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+    color: white;
+}
+.container li:hover a {
+    background-color: rgb(50, 63, 74);
+    border-radius: 1.2rem;
+    margin-right: 65rem;
+}
+
+.main .card a::before {
     content: "> ";
     color: coral;
 }
@@ -53,11 +74,26 @@ ul {
 }
 
 .location {
+    color: white;
     border-radius: 1rem;
-    padding: 0.1rem;
+    padding: 0.3rem;
     text-decoration: none;
 }
+
+select {
+    background-color: transparent;
+    border-radius: 0%;
+}
+option:hover {
+    background-color: transparent;
+}
+
+#locationTag {
+    display: none;
+}
+
 .JC2 {
+    color: black;
     background-color: lime;
 }
 .JC3 {
@@ -65,9 +101,11 @@ ul {
 }
 
 .Fen2 {
+    color: black;
     background-color: rgb(255, 234, 0);
 }
 .Fen3 {
+    color: black;
     background-color: gold;
 }
 .Fen4 {

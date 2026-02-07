@@ -52,6 +52,15 @@ def login():
     
     return render_template("login.html")
 
+@app.route("/setLocation", methods=["POST"])
+@login_required
+def setLocation():
+    if current_user:
+        data = request.get_json()
+        selected_location = data["location"]
+        current_user.loc = selected_location
+        db.session.commit()
+
 @app.route("/profile", methods=["GET", "POST"])
 @login_required
 def profile():
