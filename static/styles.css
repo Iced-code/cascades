@@ -58,10 +58,12 @@ hr {
     text-decoration: none;
     color: white;
 }
+
 .container li:hover a {
+    font-weight: bold;
     background-color: rgb(50, 63, 74);
     border-radius: 1.2rem;
-    margin-right: 65rem;
+    /* margin-right: 65rem; */
 }
 
 .main .card a::before {

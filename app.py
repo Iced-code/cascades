@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+from flask_sqlalchemy import SQLAlchemy
 from models import db, User, location
 from dotenv import load_dotenv
 import os
@@ -8,9 +9,15 @@ load_dotenv()
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("SQLALCHEMY_DATABASE_URI")
+#app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("SQLALCHEMY_DATABASE_URI")
+
+mysql_password = os.environ.get("MYSQL_PASSWORD")
+users_db = "cascades_users"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://root:{mysql_password}@localhost/{users_db}"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
+#db = SQLAlchemy(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -60,6 +67,8 @@ def setLocation():
         selected_location = data["location"]
         current_user.loc = selected_location
         db.session.commit()
+
+    return current_user.loc
 
 @app.route("/profile", methods=["GET", "POST"])
 @login_required
