@@ -113,3 +113,8 @@ option:hover {
 .Fen4 {
     background-color: goldenrod;
 }
+
+.Horizon, .Planetary, .Innovation {
+    background-color: azure;
+    color: black;
+}

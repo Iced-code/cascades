@@ -5,14 +5,17 @@ from enum import Enum
 class location(Enum):
     JC2 = "Johnson Center 2"
     JC3 = "Johnson Center 3"
+    
     Fen2 = "Fenwick 2"
     Fen3 = "Fenwick 3"
     Fen4 = "Fenwick 4"
 
+    Horizon = "Horizon"
+    Innovation = "Innovation"
+    Planetary = "Planetary"
+
 
 db = SQLAlchemy()
-
-
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)

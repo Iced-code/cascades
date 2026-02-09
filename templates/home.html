@@ -13,6 +13,15 @@
       <hr>
 
       <div class="container">
+        <select class="location" name="location" id="locationDropdown" onchange="updateLocationTag()">
+          <option class="location"></option>
+          <option value="JC" class="location JC2">Johnson Center (JC)</option>
+          <option value="Fenwick" class="location Fen4">Fenwick (Fen)</option>
+          <option value="Horizon" class="location Horizon">Horizon Hall</option>
+          <option value="Planetary" class="location Planetary">Planetary</option>
+          <option value="Innovation" class="location Innovation">Innovation</option>
+        </select>
+
         <ul class="card">
           {% for user in users %}
             <li>
@@ -24,5 +33,28 @@
         </ul>
         </div>
     </div>
+
+    <script>
+      function updateLocationTag(){
+        const location = document.getElementById("locationDropdown").value;
+
+        window.location.href = `/home?location=${encodeURIComponent(location)}`;
+        
+        /* fetch("/home", {
+          method: "GET",
+          headers: { "Content-Type": "application/json"},
+          body: JSON.stringify({ "location": locationDropdown.value })
+        }); */
+      }
+
+      function setDropdown(){
+        const locationTag = document.getElementById("locationTag");
+        const locationDropdown = document.getElementById("locationDropdown");
+
+        locationDropdown.value = locationTag.innerText;
+        locationDropdown.className = locationTag.className;
+      }
+      setDropdown();
+    </script>
   </body>
 </html>

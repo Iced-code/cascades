@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import or_
 from models import db, User, location
 from dotenv import load_dotenv
 import os
@@ -94,7 +95,18 @@ def public_profile(username):
 @app.route("/")
 @app.route("/home")
 def home():
-    users = User.query.all()
+    location = request.args.get("location")
+
+    if(location):
+        if location == "JC":
+            users = User.query.filter(or_(User.loc=="JC2", User.loc=="JC3")).all()
+        elif location == "Fenwick":
+            users = User.query.filter(or_(User.loc=="Fen2", User.loc=="Fen3", User.loc=="Fen4")).all()
+        else:
+            users = User.query.filter_by(loc=location).all()
+    else:
+        users = User.query.all()
+    
     return render_template("home.html", users=users)
 
 @app.route("/logout")
