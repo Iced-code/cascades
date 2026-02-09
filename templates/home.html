@@ -18,8 +18,8 @@
           <option value="JC" class="location JC2">Johnson Center (JC)</option>
           <option value="Fenwick" class="location Fen4">Fenwick (Fen)</option>
           <option value="Horizon" class="location Horizon">Horizon Hall</option>
-          <option value="Planetary" class="location Planetary">Planetary</option>
-          <option value="Innovation" class="location Innovation">Innovation</option>
+          <option value="Planetary" class="location Planetary">Planetary Hall</option>
+          <option value="Innovation" class="location Innovation">Innovation Hall</option>
         </select>
 
         <ul class="card">
@@ -48,11 +48,12 @@
       }
 
       function setDropdown(){
-        const locationTag = document.getElementById("locationTag");
-        const locationDropdown = document.getElementById("locationDropdown");
+        const params = new URLSearchParams(window.location.search);
+        const loc = params.get("location");
 
-        locationDropdown.value = locationTag.innerText;
-        locationDropdown.className = locationTag.className;
+        const locationDropdown = document.getElementById("locationDropdown");
+        locationDropdown.value = loc;
+        locationDropdown.className = "location " + loc;
       }
       setDropdown();
     </script>

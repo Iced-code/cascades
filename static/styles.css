@@ -93,12 +93,15 @@ option:hover {
 #locationTag {
     display: none;
 }
+.location {
+    background-color: azure;
+}
 
 .JC2 {
     color: black;
     background-color: lime;
 }
-.JC3 {
+.JC3, .JC {
     background-color: green;
 }
 
@@ -110,7 +113,8 @@ option:hover {
     color: black;
     background-color: gold;
 }
-.Fen4 {
+.Fen4, .Fenwick {
+    color: black;
     background-color: goldenrod;
 }
 

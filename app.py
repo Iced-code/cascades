@@ -43,6 +43,9 @@ def signup():
         login_user(user)
         return redirect(url_for("home"))
 
+    if current_user:
+        return redirect(url_for("home"))
+        
     return render_template("signup.html")
 
 @app.route('/login', methods=["GET","POST"])
@@ -57,6 +60,8 @@ def login():
         else:
             return redirect(url_for("signup"))
 
+    if current_user:
+        return redirect(url_for("home"))
     
     return render_template("login.html")
 

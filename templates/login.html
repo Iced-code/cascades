@@ -8,7 +8,12 @@
     <div class="main">
       <div class="navbar">
         <h2><a href="/home">Home</a></h2>
-        <h2><a href="/profile">Profile</a></h2>
+        {% if user %}
+          <h2><a href="/profile">Profile</a></h2>
+        {% endif %}
+        {% if not user %}
+          <h2><a href="/signup">Sign up</a></h2>
+        {% endif %}
       </div>
     
       <h2>Login</h2>
