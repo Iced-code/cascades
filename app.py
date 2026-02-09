@@ -43,7 +43,7 @@ def signup():
         login_user(user)
         return redirect(url_for("home"))
 
-    if current_user:
+    if current_user.is_authenticated:
         return redirect(url_for("home"))
         
     return render_template("signup.html")
@@ -60,7 +60,7 @@ def login():
         else:
             return redirect(url_for("signup"))
 
-    if current_user:
+    if current_user.is_authenticated:
         return redirect(url_for("home"))
     
     return render_template("login.html")
@@ -68,7 +68,7 @@ def login():
 @app.route("/setLocation", methods=["POST"])
 @login_required
 def setLocation():
-    if current_user:
+    if current_user.is_authenticated:
         data = request.get_json()
         selected_location = data["location"]
         current_user.loc = selected_location
@@ -81,7 +81,7 @@ def setLocation():
 def profile():
     if request.method == "POST":
         loc = request.form["location"]
-        if current_user:
+        if current_user.is_authenticated:
             current_user.loc = loc
             db.session.commit()
         
