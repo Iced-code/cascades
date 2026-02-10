@@ -15,7 +15,7 @@
         <h2><strong>{{ user.name }}</strong> @({{ user.username }}) </h2>
         <p>Email: {{ user.email }}</p>
 
-        <select class="location" name="location" id="locationDropdown" onclick="updateLocationTag(); setDropdown()">
+        <select class="location" name="location" id="locationDropdown" onchange="updateLocationTag(); setDropdown()">
           <option value="JC2" class="location JC2">JC2</option>
           <option value="JC3" class="location JC3">JC3</option>
           <option value="Fen2" class="location Fen2">Fenwick 2</option>
